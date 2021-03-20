@@ -1,0 +1,7 @@
+name: ${project.name}
+version: ${project.version}
+main: ${main.class}
+api-version: 1.16
+authors: [ iavengetheweak ]
+description: A minecraft plugin to build a vibrant community by rewarding players for completing common tasks.
+website: www.newadventures.us
