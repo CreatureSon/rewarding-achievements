@@ -1,0 +1,13 @@
+#
+# Rewarding Achievements Configuration File
+#
+# For the source code visit my grave.
+#
+
+version: 1
+
+rewards:
+  blocks:
+    1:
+      item: dirt
+      count: 32

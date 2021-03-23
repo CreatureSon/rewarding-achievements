@@ -1,12 +1,13 @@
 package us.newadventures.rewardingachievements;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.mineacademy.fo.Common;
 import org.mineacademy.fo.plugin.SimplePlugin;
+import org.mineacademy.fo.settings.YamlStaticConfig;
 import us.newadventures.rewardingachievements.commands.ExchangeCommand;
 import us.newadventures.rewardingachievements.events.FireworkListener;
+import us.newadventures.rewardingachievements.settings.Configuration;
+
+import java.util.Arrays;
+import java.util.List;
 
 public final class RewardingAchievements extends SimplePlugin {
 
@@ -17,10 +18,8 @@ public final class RewardingAchievements extends SimplePlugin {
 		registerCommand(new ExchangeCommand());
 	}
 
-	@EventHandler
-	public void onJoin(final PlayerJoinEvent event) {
-		Player player = event.getPlayer();
-		Common.tell(player, "Hello, " + player.getName());
+	@Override
+	public List<Class<? extends YamlStaticConfig>> getSettings() {
+		return Arrays.asList(Configuration.class);
 	}
-
 }

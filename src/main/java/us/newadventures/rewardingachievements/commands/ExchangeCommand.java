@@ -3,11 +3,11 @@ package us.newadventures.rewardingachievements.commands;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.mineacademy.fo.command.SimpleCommand;
+import us.newadventures.rewardingachievements.settings.Configuration;
 import us.newadventures.rewardingachievements.utility.CustomFirework;
 
 public class ExchangeCommand extends SimpleCommand {
@@ -15,18 +15,22 @@ public class ExchangeCommand extends SimpleCommand {
 
 	public ExchangeCommand() {
 		super("exchange");
+		setMinArguments(1);
+		setUsage("<player>");
+		setDescription("Exchange items for rewards through the GuildMaster");
 	}
 
 	@Override
 	protected void onCommand() {
-		checkConsole();
 
-		ItemStack check = new ItemStack(Material.DIRT);
-		ItemStack goods = new ItemStack(Material.DIRT, 32);
+		Player player = findPlayer(args[0]);
+
+		Material dirt = Material.getMaterial(Configuration.REWARD_ITEMS);
+
+		ItemStack check = new ItemStack(dirt);
+		ItemStack goods = new ItemStack(dirt, 32);
 		ItemStack reward = new ItemStack(Material.PHANTOM_MEMBRANE, 1);
 
-		Player player = getPlayer();
-		World world = player.getWorld();
 		CustomFirework firework = new CustomFirework();
 		Location location = player.getLocation();
 		Inventory inventory = player.getInventory();
