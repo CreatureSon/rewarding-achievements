@@ -1,13 +1,23 @@
 package us.newadventures.rewardingachievements.settings;
 
+import org.bukkit.Material;
 import org.mineacademy.fo.settings.SimpleSettings;
 
 public class Configuration extends SimpleSettings {
 
-	public static String REWARD_ITEMS;
+	public static Material DIRT_EXCHANGE;
+	public static Integer DIRT_EXCHANGE_COUNT;
+	public static Material HONEY_EXCHANGE;
+	public static Integer HONEY_EXCHANGE_COUNT;
 
 	private static void init() {
-		REWARD_ITEMS = getString("rewards.blocks.1.item").toUpperCase();
+
+		pathPrefix("rewards");
+
+		DIRT_EXCHANGE = getMaterial("1.item").getMaterial();
+		DIRT_EXCHANGE_COUNT = getInteger("1.count");
+		HONEY_EXCHANGE = getMaterial("2.item").getMaterial();
+		HONEY_EXCHANGE_COUNT = getInteger("2.count");
 	}
 
 	@Override

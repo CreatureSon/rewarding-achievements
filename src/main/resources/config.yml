@@ -7,7 +7,9 @@
 version: 1
 
 rewards:
-  blocks:
-    1:
-      item: dirt
-      count: 32
+  1:
+    item: dirt
+    count: 32
+  2:
+    item: honey_bottle
+    count: 16

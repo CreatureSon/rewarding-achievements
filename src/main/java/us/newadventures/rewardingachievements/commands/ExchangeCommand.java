@@ -6,36 +6,46 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.mineacademy.fo.command.SimpleCommand;
+import org.mineacademy.fo.command.SimpleCommandGroup;
+import org.mineacademy.fo.command.SimpleSubCommand;
 import us.newadventures.rewardingachievements.settings.Configuration;
 import us.newadventures.rewardingachievements.utility.CustomFirework;
 
-public class ExchangeCommand extends SimpleCommand {
+public class ExchangeCommand extends SimpleSubCommand {
+	
+	public ExchangeCommand(final SimpleCommandGroup parent) {
+		super(parent, "exchange");
 
-
-	public ExchangeCommand() {
-		super("exchange");
-		setMinArguments(1);
-		setUsage("<player>");
+		setPermission("ra.exchange");
+		setUsage("[player]");
 		setDescription("Exchange items for rewards through the GuildMaster");
 	}
 
 	@Override
 	protected void onCommand() {
 
-		Player player = findPlayer(args[0]);
+		Player player;
+		if (args.length > 0) {
+			player = findPlayer(args[0]);
+		} else {
+			checkConsole();
+			player = getPlayer();
+		}
 
-		Material dirt = Material.getMaterial(Configuration.REWARD_ITEMS);
+		Material dirt = Configuration.DIRT_EXCHANGE;
+		int count = Configuration.DIRT_EXCHANGE_COUNT;
+		Material honey = Configuration.HONEY_EXCHANGE;
+		int honey_count = Configuration.HONEY_EXCHANGE_COUNT;
 
 		ItemStack check = new ItemStack(dirt);
-		ItemStack goods = new ItemStack(dirt, 32);
+		ItemStack goods = new ItemStack(dirt, count);
 		ItemStack reward = new ItemStack(Material.PHANTOM_MEMBRANE, 1);
 
 		CustomFirework firework = new CustomFirework();
 		Location location = player.getLocation();
 		Inventory inventory = player.getInventory();
 
-		if (inventory.containsAtLeast(check, 32)) {
+		if (inventory.containsAtLeast(check, count)) {
 			inventory.removeItem(goods);
 			inventory.addItem(reward);
 			firework.spawnFirework(location, 1, Color.LIME);
