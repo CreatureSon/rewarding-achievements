@@ -5,3 +5,9 @@ api-version: 1.16
 authors: [ iavengetheweak ]
 description: A minecraft plugin to build a vibrant community by rewarding players for completing common tasks.
 website: www.newadventures.us
+
+permissions:
+  ra.exchange:
+    default: true
+  ra.quests:
+    default: true

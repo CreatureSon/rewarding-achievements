@@ -1,0 +1,15 @@
+#
+# Rewarding Achievements Configuration File
+#
+# For the source code visit my grave.
+#
+
+version: 1
+
+rewards:
+  1:
+    item: dirt
+    count: 32
+  2:
+    item: honey_bottle
+    count: 16
