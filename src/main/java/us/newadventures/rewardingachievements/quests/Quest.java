@@ -1,9 +1,8 @@
 package us.newadventures.rewardingachievements.quests;
 
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
+import lombok.Getter;
+import org.mineacademy.fo.collection.SerializedMap;
+import org.mineacademy.fo.model.ConfigSerializable;
 import org.mineacademy.fo.remain.CompMaterial;
 
 import java.util.Collection;
@@ -11,46 +10,60 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Quest {
+@Getter
+public class Quest implements ConfigSerializable {
 
-	private static final Map<String, Quest> byName = new HashMap<>();
+	private static Map<String, Quest> quests = new HashMap<>();
 
-	private final String name;
+	private final String questID;
+	private CompMaterial tradeable;
+	private double tradeAmount;
+	private CompMaterial reward;
+	private double rewardAmount;
 
-	protected Quest(String name) {
-		this.name = name;
-		byName.put(name, this);
+	protected Quest(String questID) {
+		this.questID = questID;
 	}
 
-	public abstract Quest getNext();
+	@Override
+	public SerializedMap serialize() {
+		SerializedMap map = new SerializedMap();
 
-	public abstract CompMaterial getIcon();
+		map.put("name", questID);
+		map.put("trade", tradeable.toString().toLowerCase() + ", " + tradeAmount);
+		map.put("reward", reward.toString().toLowerCase() + ", " + rewardAmount);
 
-	public abstract String[] getMenuLore();
-
-	public abstract String getCompletion(Object completionData);
-
-	public void onKill(final Player attacker, final LivingEntity target, final EntityDeathEvent event) {
-
+		return map;
 	}
 
-	public void onAttack(final Player attacker, final LivingEntity target, final EntityDamageByEntityEvent event) {
+	public static Quest deserialize(String questID, SerializedMap map) {
+		Quest quest = new Quest(questID);
 
+		String[] trades = map.getString("trade").split(",");
+		String[] rewards = map.getString("reward").split(",");
+
+		quest.tradeable = CompMaterial.fromString(trades[0]);
+		quest.tradeAmount = Double.parseDouble(trades[1]);
+		quest.reward = CompMaterial.fromString(rewards[0]);
+		quest.rewardAmount = Double.parseDouble(rewards[1]);
+
+		return quest;
 	}
 
-	public void onDamaged(final LivingEntity attacker, final Player defender, final EntityDamageByEntityEvent event) {
-		
+	public static void loadQuests(Map<String, Quest> loadedQuests) {
+		quests = loadedQuests;
 	}
+	//
 
 	public static Quest getByName(final String name) {
-		return byName.get(name);
+		return quests.get(name);
 	}
 
 	public static Collection<Quest> getQuests() {
-		return Collections.unmodifiableCollection(byName.values());
+		return Collections.unmodifiableCollection(quests.values());
 	}
 
 	public static Collection<String> getQuestNames() {
-		return Collections.unmodifiableCollection(byName.keySet());
+		return Collections.unmodifiableCollection(quests.keySet());
 	}
 }
