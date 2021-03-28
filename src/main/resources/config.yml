@@ -6,10 +6,23 @@
 
 version: 1
 
-rewards:
+# Add Quests to this file
+# Each quest requires a unique identifier
+# Follow the structure of the default quests
+# trade: <item>, <amount>
+# reward: <item>, <amount>
+quests:
   1:
-    item: dirt
-    count: 32
+    trade: dirt, 32
+    reward: phantom_membrane, 1
   2:
-    item: honey_bottle
-    count: 16
+    trade: honey_bottle, 16
+    reward: phantom_membrane, 3
+  3:
+    trade: sugar_cane, 64
+    reward: phantom_membrane, 1
+  4:
+    trade: coal, 32
+    reward: phantom_membrane, 1
+
+# When updating config - remove old config file from server.  So far needed for test server, have not tested on real server

@@ -1,26 +1,22 @@
 package us.newadventures.rewardingachievements.menus;
 
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.mineacademy.fo.Common;
-import org.mineacademy.fo.ItemUtil;
 import org.mineacademy.fo.menu.Menu;
 import org.mineacademy.fo.menu.MenuPagged;
 import org.mineacademy.fo.menu.button.Button;
 import org.mineacademy.fo.menu.button.ButtonMenu;
 import org.mineacademy.fo.menu.model.ItemCreator;
 import org.mineacademy.fo.remain.CompMaterial;
-
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import us.newadventures.rewardingachievements.quests.Quest;
 
 public class QuestsMenu extends Menu {
 
 	private final Button dirtButton;
 	private final Button honeyButton;
-	private final Button eggButton;
+	private final Button questButton;
 
 	public QuestsMenu() {
 
@@ -61,10 +57,10 @@ public class QuestsMenu extends Menu {
 			}
 		};
 
-		eggButton = new ButtonMenu(new EggsMenu(), CompMaterial.PHANTOM_SPAWN_EGG,
-				"Monster Egg Menu",
-				"Click to open monster",
-				"egg selection menu.");
+		questButton = new ButtonMenu(new QuestsMenu(), CompMaterial.PHANTOM_SPAWN_EGG,
+				"GuildMaster Quests Menu",
+				"Click to trade items",
+				"for a reward!");
 	}
 
 	@Override
@@ -75,7 +71,7 @@ public class QuestsMenu extends Menu {
 		else if (slot == 9 * 1 + 5)
 			return honeyButton.getItem();
 		else if (slot == 9 * 1 + 4)
-			return eggButton.getItem();
+			return questButton.getItem();
 		else
 			return super.getItemAt(slot);
 	}
@@ -86,28 +82,21 @@ public class QuestsMenu extends Menu {
 	}
 
 
-	private class EggsMenu extends MenuPagged<EntityType> {
+	private class TestMenu extends MenuPagged<Quest> {
 
-		protected EggsMenu() {
-			super(QuestsMenu.this, Arrays.asList(EntityType.values())
-					.stream().filter((entityType -> entityType.isSpawnable() &&
-							entityType.isAlive() &&
-							(entityType == EntityType.SHEEP || CompMaterial.makeMonsterEgg(entityType) != CompMaterial.SHEEP_SPAWN_EGG)))
-					.collect(Collectors.toList()));
 
-			setTitle("&aCreature Eggs");
+		protected TestMenu(Iterable<Quest> pages) {
+			super(pages);
 		}
 
 		@Override
-		protected ItemStack convertToItemStack(final EntityType entity) {
-			return ItemCreator.of(CompMaterial.makeMonsterEgg(entity),
-					"Spawn " + ItemUtil.bountifyCapitalized(entity)
-			).build().make();
+		protected ItemStack convertToItemStack(Quest item) {
+			return null;
 		}
 
 		@Override
-		protected void onPageClick(Player player, EntityType entity, ClickType click) {
-			player.getInventory().addItem(ItemCreator.of(CompMaterial.makeMonsterEgg(entity)).build().make());
+		protected void onPageClick(Player player, Quest item, ClickType click) {
+
 		}
 	}
 }

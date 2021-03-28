@@ -28,6 +28,7 @@ public final class RewardingAchievements extends SimplePlugin {
 		registerCommands("rewardingachievements|ra", new CommandGroup());
 	}
 
+
 	@Override
 	public List<Class<? extends YamlStaticConfig>> getSettings() {
 		return Arrays.asList(Configuration.class);

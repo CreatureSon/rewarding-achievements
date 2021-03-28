@@ -1,23 +1,26 @@
 package us.newadventures.rewardingachievements.settings;
 
-import org.bukkit.Material;
 import org.mineacademy.fo.settings.SimpleSettings;
+import us.newadventures.rewardingachievements.quests.Quest;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Configuration extends SimpleSettings {
 
-	public static Material DIRT_EXCHANGE;
-	public static Integer DIRT_EXCHANGE_COUNT;
-	public static Material HONEY_EXCHANGE;
-	public static Integer HONEY_EXCHANGE_COUNT;
+	public static Map<String, Quest> quests = new HashMap<>();
 
 	private static void init() {
 
-		pathPrefix("rewards");
+		LinkedHashMap<String, LinkedHashMap<String, Object>> questMap = getValuesAndKeys("quests");
 
-		DIRT_EXCHANGE = getMaterial("1.item").getMaterial();
-		DIRT_EXCHANGE_COUNT = getInteger("1.count");
-		HONEY_EXCHANGE = getMaterial("2.item").getMaterial();
-		HONEY_EXCHANGE_COUNT = getInteger("2.count");
+		pathPrefix("quests");
+		for (String key : questMap.keySet()) {
+			quests.put(key, Quest.deserialize(key, getMap(key)));
+		}
+
+		Quest.loadQuests(quests);
 	}
 
 	@Override
