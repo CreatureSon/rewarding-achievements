@@ -9,7 +9,7 @@
      -->
 
     <!-- Your MC test server location for Windows -->
-    <condition property="serverPath" value="C:\Users\Creature\Documents\OC_Adventure\Minecraft\Test Server">
+    <condition property="serverPath" value="..\..\Test Server">
         <os family="windows"/>
     </condition>
 
