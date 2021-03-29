@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.database.SimpleFlatDatabase;
-import us.newadventures.rewardingachievements.utility.PlayerData;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RADatabases extends SimpleFlatDatabase<PlayerData> {
