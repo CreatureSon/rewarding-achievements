@@ -9,7 +9,6 @@ java -Xmx1G -Xms1G -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+UseG1GC -XX:+
 
 Maven Build Parameters: clean insteall
 
-Ant Build Parameters:
-  - Enable option to create Ant build file
+Ant Build Parameters: - Enable option to create Ant build file
   - Point to Test Server patched jar
   - Add Before Launch "Run Ant Target"
