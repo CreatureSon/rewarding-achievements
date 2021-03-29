@@ -7,10 +7,10 @@ import org.mineacademy.fo.debug.LagCatcher;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import org.mineacademy.fo.settings.YamlStaticConfig;
 import us.newadventures.rewardingachievements.commands.CommandGroup;
+import us.newadventures.rewardingachievements.database.PlayerData;
 import us.newadventures.rewardingachievements.database.RADatabases;
 import us.newadventures.rewardingachievements.events.FireworkListener;
 import us.newadventures.rewardingachievements.settings.Configuration;
-import us.newadventures.rewardingachievements.utility.PlayerData;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +37,6 @@ public final class RewardingAchievements extends SimplePlugin {
 	@EventHandler
 	public void on(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
-		final PlayerData playerData = PlayerData.getData(player);
+		PlayerData.getData(player);
 	}
 }
