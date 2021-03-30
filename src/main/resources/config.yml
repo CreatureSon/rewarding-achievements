@@ -20,21 +20,17 @@ quests:
     name: "&2Black Earth"
     trade: dirt, 32
     reward: phantom_membrane, 1
-    lore: "32 Dirt,is 1 Phantom"
   2:
     name: "&6Sweet Honey"
     trade: honey_bottle, 16
     reward: phantom_membrane, 3
-    lore: "16 Honey Bottles,are 3 Phantoms"
   3:
     name: "&aSugary Cane"
     trade: sugar_cane, 64
     reward: phantom_membrane, 1
-    lore: "64 Sugar Cane,is 1 Phantom"
   4:
     name: "&8Black Gold"
     trade: coal, 32
     reward: phantom_membrane, 1
-    lore: "32 Coal,is 1 Phantom"
 
 # When updating config - remove old config file from server.  So far needed for test server, have not tested on real server
