@@ -33,11 +33,11 @@ public class ExchangeCommand extends SimpleSubCommand {
 
 		if (playerData.getCompletedQuests().isEmpty() || !playerData.getCompletedQuestIDs().contains(quest.getQuestID())) {
 			Material tradeItem = quest.getTradeable().getMaterial();
-			int tradeCount = (int) quest.getTradeAmount();
+			int tradeCount = quest.getTradeAmount();
 
 			ItemStack check = new ItemStack(tradeItem);
 			ItemStack goods = new ItemStack(tradeItem, tradeCount);
-			ItemStack reward = new ItemStack(quest.getReward().getMaterial(), (int) quest.getRewardAmount());
+			ItemStack reward = new ItemStack(quest.getReward().getMaterial(), quest.getRewardAmount());
 
 			CustomFirework firework = new CustomFirework();
 			Location location = player.getLocation();
