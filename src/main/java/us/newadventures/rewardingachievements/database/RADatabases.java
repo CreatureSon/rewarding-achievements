@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.database.SimpleFlatDatabase;
 
+import java.util.List;
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RADatabases extends SimpleFlatDatabase<PlayerData> {
 
@@ -14,16 +16,24 @@ public class RADatabases extends SimpleFlatDatabase<PlayerData> {
 
 	@Override
 	protected void onLoad(SerializedMap map, PlayerData data) {
+		List<String> questIDs = map.getStringList("quests");
 
+		if (!questIDs.isEmpty())
+			data.loadCompletedQuests(questIDs);
 	}
 
 	@Override
 	protected SerializedMap onSave(PlayerData data) {
-		return null;
+		SerializedMap map = new SerializedMap();
+
+		if (!data.getCompletedQuestIDs().isEmpty())
+			map.put("quests", data.getCompletedQuestIDs());
+
+		return map;
 	}
 
 	@Override
 	protected int getExpirationDays() {
-		return 180;
+		return 365;
 	}
 }
