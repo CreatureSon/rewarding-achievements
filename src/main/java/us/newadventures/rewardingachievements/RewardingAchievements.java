@@ -1,14 +1,11 @@
 package us.newadventures.rewardingachievements;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.mineacademy.fo.debug.LagCatcher;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import org.mineacademy.fo.settings.YamlStaticConfig;
 import us.newadventures.rewardingachievements.commands.CommandGroup;
-import us.newadventures.rewardingachievements.database.PlayerData;
 import us.newadventures.rewardingachievements.database.RADatabases;
+import us.newadventures.rewardingachievements.events.DatabaseListener;
 import us.newadventures.rewardingachievements.events.FireworkListener;
 import us.newadventures.rewardingachievements.settings.Configuration;
 
@@ -25,18 +22,12 @@ public final class RewardingAchievements extends SimplePlugin {
 		LagCatcher.end("mysql", 0, "Connected to MySQL database.  Took {time} ms.");
 
 		registerEvents(new FireworkListener());
+		registerEvents(new DatabaseListener());
 		registerCommands("rewardingachievements|ra", new CommandGroup());
 	}
-
 
 	@Override
 	public List<Class<? extends YamlStaticConfig>> getSettings() {
 		return Arrays.asList(Configuration.class);
-	}
-
-	@EventHandler
-	public void on(PlayerJoinEvent event) {
-		Player player = event.getPlayer();
-		PlayerData.getData(player);
 	}
 }
