@@ -9,11 +9,9 @@ version: 1
 # Add Quests to this file
 # Each quest requires a unique identifier
 # Follow the structure of the default quests
-# The purpose of the lore line-item is to enable plurality of given items
 # name: "Name Title for Quest"
 # trade: <item>, <amount>
 # reward: <item>, <amount>
-# lore: "<trade-count> <trade item>", "<reward-count> <reward-item>"
 
 quests:
   1:

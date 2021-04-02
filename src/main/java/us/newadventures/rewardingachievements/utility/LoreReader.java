@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LoreReader {
 
-	public static String capitalize(String lore) {
+	public static String capitalize(String lore, int amount) {
 
 		if (lore == null || lore.isEmpty()) {
 			return lore;
@@ -16,38 +16,43 @@ public class LoreReader {
 			trade.add(s.substring(0, 1).toUpperCase() + s.substring(1));
 		}
 
-		return String.join(" ", trade);
-	}
-
-	public static String plural(String lore) {
-
-		if (lore == null || lore.isEmpty()) {
-			return lore;
-		}
-
-		List<String> trade = new ArrayList<>();
-		for (String s : lore.split(" ")) {
-			String plural;
-			if (s.equalsIgnoreCase("bottle")) {
-				plural = s + "s";
-			} else {
-				plural = s;
-			}
-			trade.add(plural);
-		}
+		int lastEntry = trade.size() - 1;
+		trade.set(lastEntry, plural(trade.get(lastEntry), amount));
 
 		return String.join(" ", trade);
 	}
 
-	public static String pluralReward(double reward) {
-		if (reward > 1) {
-			return "are " + reward + " Phantoms";
+	public static String plural(String lore, int amount) {
+
+		String plural;
+		if (amount > 1) {
+			plural = PluralMaterial.getPlural(lore);
 		} else {
-			return "is " + reward + " Phantom";
+			plural = lore;
 		}
+
+		return plural;
+	}
+
+	public static String pluralReward(String reward, int amount) {
+
+		String rewardName;
+		if (reward.equalsIgnoreCase("phantom_membrane")) {
+			rewardName = "Phantom";
+		} else {
+			rewardName = reward;
+		}
+
+		String rewardLore;
+		if (amount > 1) {
+			rewardLore = "are " + amount + " " + rewardName + "s";
+		} else {
+			rewardLore = "is " + amount + " " + rewardName;
+		}
+		return rewardLore;
 	}
 
 	public static String pluralTrade(String trade, int amount) {
-		return amount + " " + plural(capitalize(trade));
+		return amount + " " + capitalize(trade, amount);
 	}
 }

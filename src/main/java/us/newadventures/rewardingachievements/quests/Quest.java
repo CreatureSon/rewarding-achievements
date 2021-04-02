@@ -50,10 +50,10 @@ public class Quest implements ConfigSerializable {
 		quest.name = map.getString("name");
 		quest.tradeable = CompMaterial.fromString(trades[0]);
 		quest.tradeAmount = (int) Double.parseDouble(trades[1]);
-		quest.tradeLore = LoreReader.pluralTrade(quest.tradeable.toString().toLowerCase(), quest.tradeAmount);
+		quest.tradeLore = LoreReader.pluralTrade(trades[0], quest.tradeAmount);
 		quest.reward = CompMaterial.fromString(rewards[0]);
 		quest.rewardAmount = (int) Double.parseDouble(rewards[1]);
-		quest.rewardLore = LoreReader.pluralReward(quest.rewardAmount);
+		quest.rewardLore = LoreReader.pluralReward(rewards[0], quest.rewardAmount);
 
 		return quest;
 	}
