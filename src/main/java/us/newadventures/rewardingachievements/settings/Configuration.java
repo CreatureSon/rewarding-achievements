@@ -3,9 +3,7 @@ package us.newadventures.rewardingachievements.settings;
 import org.mineacademy.fo.settings.SimpleSettings;
 import us.newadventures.rewardingachievements.quests.Quest;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Configuration extends SimpleSettings {
 
@@ -20,7 +18,10 @@ public class Configuration extends SimpleSettings {
 			quests.put(key, Quest.deserialize(key, getMap(key)));
 		}
 
-		Quest.loadQuests(quests);
+		TreeMap<String, Quest> sortedQuestMap = new TreeMap<>(Comparator.comparingInt(Integer::parseInt));
+		sortedQuestMap.putAll(quests);
+
+		Quest.loadQuests(sortedQuestMap);
 	}
 
 	@Override
