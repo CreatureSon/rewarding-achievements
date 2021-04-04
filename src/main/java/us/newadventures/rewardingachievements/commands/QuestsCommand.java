@@ -1,14 +1,13 @@
 package us.newadventures.rewardingachievements.commands;
 
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.command.SimpleCommandGroup;
 import org.mineacademy.fo.command.SimpleSubCommand;
 import us.newadventures.rewardingachievements.menus.QuestsMenu;
 
 public class QuestsCommand extends SimpleSubCommand {
 
-	public QuestsCommand(final SimpleCommandGroup parent) {
-		super(parent, "quests");
+	public QuestsCommand() {
+		super("quests");
 
 		setPermission("ra.quests");
 		setUsage("[player]");

@@ -1,5 +1,6 @@
 package us.newadventures.rewardingachievements;
 
+import org.mineacademy.fo.command.SimpleCommandGroup;
 import org.mineacademy.fo.debug.LagCatcher;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import org.mineacademy.fo.settings.YamlStaticConfig;
@@ -14,6 +15,8 @@ import java.util.List;
 
 public final class RewardingAchievements extends SimplePlugin {
 
+	private final SimpleCommandGroup mainCommandGroup = new CommandGroup();
+
 	@Override
 	protected void onPluginStart() {
 
@@ -23,11 +26,15 @@ public final class RewardingAchievements extends SimplePlugin {
 
 		registerEvents(new FireworkListener());
 		registerEvents(new DatabaseListener());
-		registerCommands("rewardingachievements|ra", new CommandGroup());
 	}
 
 	@Override
 	public List<Class<? extends YamlStaticConfig>> getSettings() {
 		return Arrays.asList(Configuration.class);
+	}
+
+	@Override
+	public SimpleCommandGroup getMainCommand() {
+		return mainCommandGroup;
 	}
 }
