@@ -9,28 +9,118 @@ version: 1
 # Add Quests to this file
 # Each quest requires a unique identifier
 # Follow the structure of the default quests
-# The purpose of the lore line-item is to enable plurality of given items
 # name: "Name Title for Quest"
 # trade: <item>, <amount>
 # reward: <item>, <amount>
-# lore: "<trade-count> <trade item>", "<reward-count> <reward-item>"
 
 quests:
   1:
-    name: "&2Black Earth"
-    trade: dirt, 32
-    reward: phantom_membrane, 1
-  2:
     name: "&6Sweet Honey"
     trade: honey_bottle, 16
-    reward: phantom_membrane, 3
+    reward: phantom_membrane, 5
+  2:
+    name: "&5Venom of the Sea"
+    trade: pufferfish, 10
+    reward: phantom_membrane, 50
   3:
-    name: "&aSugary Cane"
-    trade: sugar_cane, 64
+    name: "&2Black Earth"
+    trade: dirt, 32
     reward: phantom_membrane, 1
   4:
     name: "&8Black Gold"
     trade: coal, 32
     reward: phantom_membrane, 1
+  5:
+    name: "&3Irish Potatoes"
+    trade: potato, 64
+    reward: phantom_membrane, 2
+  6:
+    name: "&5Rabbit Food"
+    trade: carrot, 64
+    reward: phantom_membrane, 3
+  7:
+    name: "&5Beets"
+    trade: beetroot, 32
+    reward: phantom_membrane, 2
+  8:
+    name: "&5Piglin's Berries"
+    trade: nether_wart, 64
+    reward: phantom_membrane, 10
+  9:
+    name: "&5Rabbit Food"
+    trade: carrot, 64
+    reward: phantom_membrane, 1
+  10:
+    name: "&5Beeautiful Honey"
+    trade: honey_bottle, 128
+    reward: phantom_membrane, 50
+  11:
+    name: "&aSugary Cane"
+    trade: sugar_cane, 64
+    reward: phantom_membrane, 1
+  12:
+    name: "&5Banquettes"
+    trade: bread, 32
+    reward: phantom_membrane, 5
+  13:
+    name: "&5Fresh Salmon"
+    trade: cooked_salmon, 32
+    reward: phantom_membrane, 6
+  14:
+    name: "&5Standard Issue Iron"
+    trade: iron_ingot, 64
+    reward: phantom_membrane, 10
+  15:
+    name: "&5Dragon Fruit"
+    trade: chorus_fruit, 32
+    reward: phantom_membrane, 25
+  16:
+    name: "&5Sea Cows Favorite"
+    trade: seagrass, 32
+    reward: phantom_membrane, 5
+  17:
+    name: "&5Fuji Apples"
+    trade: apple, 16
+    reward: phantom_membrane, 10
+  18:
+    name: "&5Magical Orbs"
+    trade: ender_pearl, 16
+    reward: phantom_membrane, 15
+  19:
+    name: "&5Natural Honey Makers"
+    trade: bee_nest, 10
+    reward: phantom_membrane, 100
+  20:
+    name: "&5Grandmas Cookies"
+    trade: cookie, 64
+    reward: phantom_membrane, 3
+  21:
+    name: "&5Snow Berries"
+    trade: sweet_berries, 64
+    reward: phantom_membrane, 3
+  22:
+    name: "&5Resurrecting Stones"
+    trade: totem_of_undying, 3
+    reward: phantom_membrane, 100
+  23:
+    name: "&5Baby Turtle Shells"
+    trade: scute, 10
+    reward: phantom_membrane, 20
+  24:
+    name: "&5Cooked Hoppers"
+    trade: cooked_rabbit, 32
+    reward: phantom_membrane, 5
+  25:
+    name: "&5Me Good Luck Charms"
+    trade: rabbit_foot, 10
+    reward: phantom_membrane, 25
+  26:
+    name: "&5Fiery Furnace"
+    trade: blaze_rod, 16
+    reward: phantom_membrane, 32
+  27:
+    name: "&5Buried Treasure"
+    trade: heart_of_the_sea, 10
+    reward: phantom_membrane, 50
 
 # When updating config - remove old config file from server.  So far needed for test server, have not tested on real server

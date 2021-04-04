@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="rewarding-achievements" default="Build">
+<project name="RewardingAchievements" default="Build">
 
     <!--
         To make it easier to develop on multiple computers, I included three paths to
