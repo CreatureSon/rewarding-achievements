@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.mineacademy.fo.Common;
-import org.mineacademy.fo.command.SimpleCommandGroup;
 import org.mineacademy.fo.command.SimpleSubCommand;
 import us.newadventures.rewardingachievements.database.PlayerData;
 import us.newadventures.rewardingachievements.quests.Quest;
@@ -15,8 +14,8 @@ import us.newadventures.rewardingachievements.utility.CustomFirework;
 
 public class ExchangeCommand extends SimpleSubCommand {
 
-	public ExchangeCommand(final SimpleCommandGroup parent) {
-		super(parent, "exchange");
+	public ExchangeCommand() {
+		super("exchange");
 
 		setPermission("ra.exchange");
 		setMinArguments(2);
