@@ -6,9 +6,11 @@ import java.util.List;
 public class PluralMaterial {
 
 	private static final List<String> plurals = Arrays.asList(
+			"phantom",
 			"bottle",
 			"carrot",
 			"potato",
+			"apple",
 			"emerald",
 			"diamond",
 			"ingot",
@@ -52,7 +54,8 @@ public class PluralMaterial {
 			"torch",
 			"vine",
 			"bean",
-			"noteblock"
+			"noteblock",
+			"scute"
 	);
 
 	private static final List<String> specialPlurals = Arrays.asList(

@@ -46,7 +46,7 @@ public class ExchangeCommand extends SimpleSubCommand {
 				inventory.removeItem(goods);
 				inventory.addItem(reward);
 				firework.spawnFirework(location, 1, Color.LIME);
-				Common.tell(player, "&3[&5GuildMaster&3]&7 Thank you for the " + quest.getName() + "&7, here " + quest.getRewardLore() + " for your troubles");
+				Common.tell(player, "&3[&5GuildMaster&3]&7 Thank you for the " + quest.getName() + "&7, take " + quest.getRewardLore() + " for your troubles");
 				playerData.questCompleted(quest);
 			} else {
 				Common.tell(player, "&3[&5GuildMaster&3]&7 Please provide " + quest.getTradeLore() + " to receive reward");

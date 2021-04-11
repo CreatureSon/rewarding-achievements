@@ -10,10 +10,13 @@ public class FireworkListener implements Listener {
 
 	@EventHandler
 	public void negateFireworkDamage(EntityDamageByEntityEvent event) {
-		Firework fw = (Firework) event.getDamager();
-		if (fw.getCustomName().equals("nodamage")) {
-			Common.log(fw.getCustomName());
-			event.setCancelled(true);
+		if (event.getDamager().equals(Firework.class)) {
+
+			Firework fw = (Firework) event.getDamager();
+			if (fw.getCustomName().equals("nodamage")) {
+				Common.log(fw.getCustomName());
+				event.setCancelled(true);
+			}
 		}
 	}
 }

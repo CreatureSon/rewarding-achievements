@@ -36,20 +36,14 @@ public class LoreReader {
 
 	public static String pluralReward(String reward, int amount) {
 
-		String rewardName;
+		String rewardLore;
 		if (reward.equalsIgnoreCase("phantom_membrane")) {
-			rewardName = "Phantom";
+			rewardLore = "Phantom";
 		} else {
-			rewardName = reward;
+			rewardLore = reward;
 		}
 
-		String rewardLore;
-		if (amount > 1) {
-			rewardLore = "are " + amount + " " + rewardName + "s";
-		} else {
-			rewardLore = "is " + amount + " " + rewardName;
-		}
-		return rewardLore;
+		return amount + " " + capitalize(rewardLore, amount);
 	}
 
 	public static String pluralTrade(String trade, int amount) {

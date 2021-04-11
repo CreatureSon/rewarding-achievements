@@ -11,3 +11,5 @@ permissions:
     default: true
   ra.quests:
     default: true
+  ra.reload:
+    default: true

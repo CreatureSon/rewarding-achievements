@@ -22,8 +22,8 @@ public class QuestsMenu extends MenuPagged<Quest> {
 		return ItemCreator.of(quest.getTradeable(),
 				quest.getName(),
 				"",
-				"Provide " + quest.getTradeLore(),
-				"to earn your reward"
+				"Trade: " + quest.getTradeLore(),
+				"Reward: " + quest.getRewardLore()
 		).build().make();
 	}
 
